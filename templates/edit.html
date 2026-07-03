@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+<h3>Edit Application</h3>
+<form method="post">
+<input name="company" value="{{ application.company }}" required>
+<input name="role" value="{{ application.role }}" required>
+
+
+<select name="status">
+{% for s in ['Applied','Interview','Offer','Rejected'] %}
+<option {% if application.status == s %}selected{% endif %}>{{ s }}</option>
+{% endfor %}
+</select>
+
+
+<label>Follow-up Date</label>
+<input type="date" name="follow_up" value="{{ application.follow_up }}">
+
+
+<textarea name="notes">{{ application.notes }}</textarea>
+<button type="submit">Save</button>
+</form>
+{% endblock %}

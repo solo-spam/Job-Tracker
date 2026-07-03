@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block body %}
+<h3>Your Applications</h3>
+
+<label for="statusFilter">Filter by Status:</label>
+<select id="statusFilter">
+    <option value="">All</option>
+    {% set statuses = applications | map(attribute='status') | unique %}
+    {% for status in statuses %}
+        <option value="{{ status }}">{{ status }}</option>
+    {% endfor %}
+</select>
+
+
+<!-- Applications Table -->
+<table id="applicationsTable">
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Role</th>
+      <th>Status</th>
+      <th>Applied Date</th>
+      <th>Notes</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for app in applications %}
+    <tr class="status-{{ app.status|lower }}">
+      <td>{{ app.company }}</td>
+      <td>{{ app.role }}</td>
+      <td>{{ app.status }}</td>
+      <td>{{ app.applied_date }}</td>
+      <td>
+        <span class="note-tooltip">
+          {{ app.notes|default('')|truncate(50, True, '...') }}
+          <span class="tooltip-text">{{ app.notes|default('') }}</span>
+        </span>
+      </td>
+      <td>
+        <a href="/edit/{{ app.id }}" class="btn edit-btn">Edit</a>
+        <a href="/delete/{{ app.id }}" class="btn delete-btn">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<!-- Link JS -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+{% endblock %}

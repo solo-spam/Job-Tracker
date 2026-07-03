@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block body %}
+<h3>Register</h3>
+
+{% if error %}
+<p style="color:red;">{{ error }}</p>
+{% endif %}
+
+<form method="post" id="signupForm">
+    <input 
+        name="username" 
+        placeholder="Username" 
+        required 
+        value="{{ request.form.username or '' }}"
+    >
+    <input 
+        name="password" 
+        type="password" 
+        placeholder="Password" 
+        id="password"
+        required
+    >
+    <input 
+        name="confirmPassword" 
+        type="password" 
+        placeholder="ConfirmPassword" 
+        id="confirmPassword"
+        required
+    >
+    <button type="submit">Sign up</button>
+    <p id="errorMsg" style="color:red;"></p>
+</form>
+<p>Already have an account? <a href="/login">Login here</a></p>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}
