@@ -30,3 +30,7 @@ From a technical perspective, the project demonstrates proficiency in full-stack
 ##Benefits and Use Case
 
 In essence, the Job Application Tracker is more than just a table of entries. It is a powerful organizational tool that helps users track the progress of each application, store detailed information, and make informed decisions during their job search. Whether actively seeking a job or maintaining a historical record, the application streamlines the process, reduces manual effort, and increases visibility into a user’s job search strategy. By combining an interactive frontend, a secure backend, and a clean user experience, this project provides a complete solution for managing job applications effectively.
+
+##Live Demo
+
+https://job-tracker-ym68.onrender.com
